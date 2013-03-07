@@ -1,1 +1,14 @@
-teams.html.erb
+<div ng-controller="TeamsCtrl">
+<h1>Teams</h1>
+
+<form ng-submit="addTeam()">
+  <input type="text" ng-model="newTeam.title">
+  <input type="submit" value="Add">
+</form>
+
+<ul>
+  <li ng-repeat="team in teams">
+    {{team.title}}
+  </li>
+</ul>
+</div>

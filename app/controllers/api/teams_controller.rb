@@ -10,7 +10,8 @@ class Api::TeamsController < Api::ApplicationController
   end
 
   def create
-    respond_with Team.create(params[:team])
+    #respond_with Team.create(params[:team])
+    render json: Team.create(params[:team]).to_json
   end
 
   def update

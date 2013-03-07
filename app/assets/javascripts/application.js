@@ -21,3 +21,4 @@
 //= require tamer/app
 //= require tamer/factories
 //= require tamer/members_ctrl
+//= require tamer/teams_ctrl
