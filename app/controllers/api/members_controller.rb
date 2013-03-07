@@ -10,7 +10,8 @@ class Api::MembersController < Api::ApplicationController
   end
 
   def create
-    respond_with Member.create(params[:member])
+    member = Member.create!(params[:member])
+    render json: member.to_json
   end
 
   def update
