@@ -1,8 +1,8 @@
-class Api::ShiftsController < Api::ApplicationController
+class Api::SchedulingController < Api::ApplicationController
     respond_to :json
 
   def index
-    respond_with Shift.all
+    render json: Shift.all.to_json
   end
 
   def show
@@ -10,7 +10,8 @@ class Api::ShiftsController < Api::ApplicationController
   end
 
   def create
-    respond_with Shift.create(params[:shift])
+    # respond_with Shift.create(params[:shift])
+    render json: Shift.create(params[:shift]).to_json
   end
 
   def update

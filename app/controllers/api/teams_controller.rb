@@ -1,24 +1,29 @@
 class Api::TeamsController < Api::ApplicationController
-  respond_to :json
 
   def index
-    respond_with Team.all
+    @teams = Team.all
+    # render json: @teams.to_json
+    respond_to do |format|
+      format.json do
+        render json: @teams
+      end
+      format.html
+    end
   end
 
   def show
-    respond_with Team.find(params[:id])
+    render json: Team.find(params[:id]).to_json
   end
 
   def create
-    #respond_with Team.create(params[:team])
     render json: Team.create(params[:team]).to_json
   end
 
   def update
-    respond_with Team.update(params[:id], params[:team])
+    render json: Team.update(params[:id], params[:team]).to_json
   end
 
   def destroy
-    respond_with Team.destroy(params[:id])
+    render json: Team.destroy(params[:id]).to_json
   end
 end

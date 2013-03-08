@@ -2,7 +2,7 @@ class Api::MembersController < Api::ApplicationController
   respond_to :json
 
   def index
-    respond_with Member.all
+    render json: Member.all.to_json
   end
 
   def show

@@ -22,3 +22,4 @@
 //= require tamer/factories
 //= require tamer/members_ctrl
 //= require tamer/teams_ctrl
+//= require tamer/shifts_ctrl
