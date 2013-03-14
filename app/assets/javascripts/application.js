@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require twitter/bootstrap
 //= require angular
 //= require angular-resource
@@ -19,7 +20,9 @@
 // ** Angular JS Controller **
 
 //= require tamer/app
-//= require tamer/factories
-//= require tamer/members_ctrl
-//= require tamer/teams_ctrl
-//= require tamer/shifts_ctrl
+//= require tamer/models/member
+//= require tamer/models/team
+//= require tamer/models/shift
+//= require tamer/controllers/members_ctrl
+//= require tamer/controllers/teams_ctrl
+//= require tamer/controllers/shifts_ctrl

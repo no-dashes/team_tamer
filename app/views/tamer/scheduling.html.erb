@@ -1,34 +1,33 @@
+<style type="text/css">
+  .unteamed_member { outline:1px solid black; margin-top:10px; width:100%; }
+  .team_box { width:100%; outline:1px solid black; }
+</style>
+
 <div ng-controller="ShiftsCtrl">
   <h1>Scheduling</h1>
   <div class='row'>
-    <div class='span4' style='outline:1px solid black'>
+    <div class='span6' style='outline:1px solid black; width:48%; height:auto'>
       Members
       <ul>
-        <li ng-repeat="member in members">
-          {{member.name}}
+        <li ng-repeat='member in members | filter: unteamed'>
+          <div class='unteamed_member' data-drag="true" jqyoui-draggable="{animate:true}" data-jqyoui-options="{revert: 'invalid'}" data-member-id="{{member.id}}" ng-model="member">
+            {{member.name}} 
+          </div>
         </li>
       </ul>
     </div>
-    <div class='span4' style='outline:1px solid black'>
+    <div class='span6' style='outline:1px solid black; width:48%; height:auto'>
       Teams
-      <ul>
-        <li ng-repeat="team in teams">
+      <div ng-repeat="team in teams">
+        <div class='team_box' data-drop="true" jqyoui-droppable="{multiple:true, accept: '.unteamed_member', onDrop: 'addTeamMember'}" data-team-id="{{team.id}}">
           {{team.title}}
           <ol>
-            <li ng-repeat="member in team">
-              {{member.id}}
+            <li ng-repeat="member in team.members" data-member-id="{{member.id}}" data-drag="true" jqyoui-draggable="{animate:true}" data-team-id="{{team.id}}" data-jqyoui-options="{revert: 'invalid'}">
+              {{member.name}}
             </li>
           </ol>
-        </li>
-      </ul>
-    </div>
-    <div class='span4' style='outline:1px solid black'>
-      Timeline
-      <ul>
-        <li ng-repeat="shift in shifts">
-          {{shift.id}}
-        </li>
-      </ul>
+        </div>            
+      </div>
     </div>
   </div>
 </div>

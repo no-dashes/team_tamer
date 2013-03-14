@@ -2,11 +2,11 @@ class Api::MembersController < Api::ApplicationController
   respond_to :json
 
   def index
-    render json: Member.all.to_json
+    render json: Member.all.to_json, root: 'member'
   end
 
   def show
-    respond_with Member.find(params[:id])
+    render json: Member.find(params[:id]), root: 'member'
   end
 
   def create
@@ -15,7 +15,8 @@ class Api::MembersController < Api::ApplicationController
   end
 
   def update
-    respond_with Member.update(params[:id], params[:member])
+    member =  Member.update(params[:id], params[:member])
+    render json: member.to_json
   end
 
   def destroy

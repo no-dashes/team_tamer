@@ -2,17 +2,11 @@ class Api::TeamsController < Api::ApplicationController
 
   def index
     @teams = Team.all
-    # render json: @teams.to_json
-    respond_to do |format|
-      format.json do
-        render json: @teams
-      end
-      format.html
-    end
+    render json: @teams, :root => false
   end
 
   def show
-    render json: Team.find(params[:id]).to_json
+    render json: Team.find(params[:id]), :root => false
   end
 
   def create
